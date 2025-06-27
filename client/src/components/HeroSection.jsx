@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin, FaInstagram, FaArrowDown, FaDownload, FaArrowRight, FaCode, FaLaptopCode } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaInstagram, FaArrowDown, FaDownload, /*FaArrowRight,*/ FaCode, FaLaptopCode } from 'react-icons/fa';
 import { HiMail } from 'react-icons/hi';
 
 export default function HeroSection() {
@@ -11,7 +11,7 @@ export default function HeroSection() {
     "Spring Boot Enthusiast"
   ]);
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
-  const [fade, setFade] = useState(true);
+  //const [fade, setFade] = useState(true);
 
   useEffect(() => {
     const interval = setInterval(() => {
