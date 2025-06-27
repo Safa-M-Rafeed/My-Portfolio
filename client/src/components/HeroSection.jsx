@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin, FaInstagram, FaArrowDown, FaDownload, FaArrowRight, FaCode, FaLaptopCode } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaInstagram, FaDownload, FaArrowRight, FaCode, FaLaptopCode } from 'react-icons/fa';
 import { HiMail } from 'react-icons/hi';
 
 export default function HeroSection() {
@@ -11,13 +11,11 @@ export default function HeroSection() {
     "Spring Boot Enthusiast"
   ]);
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
-  const [fade, setFade] = useState(true); // ✅ uncommented
 
   useEffect(() => {
     const interval = setInterval(() => {
       setTimeout(() => {
         setCurrentRoleIndex((prev) => (prev + 1) % roles.length);
-        setFade(true); // ✅ no longer causes "not defined" error
       }, 500);
     }, 3000);
     return () => clearInterval(interval);
@@ -96,10 +94,9 @@ export default function HeroSection() {
               >
                 <HiMail className="mr-2" />
                 Let's Connect
-                <FaArrowRight className="ml-2 w-4 h-4" /> {/* ✅ uncommented use */}
+                <FaArrowRight className="ml-2 w-4 h-4" />
               </a>
               
-              {/* Download Resume Button */}
               <a
                 href="Safa CV Updated 2025.pdf"
                 target="_blank"
@@ -179,7 +176,6 @@ export default function HeroSection() {
           </motion.div>
         </div>
 
-        {/* Scroll Indicator */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
