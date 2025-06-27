@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin, FaInstagram, FaArrowDown, FaDownload, /*FaArrowRight,*/ FaCode, FaLaptopCode } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaInstagram, FaArrowDown, FaDownload, FaArrowRight, FaCode, FaLaptopCode } from 'react-icons/fa';
 import { HiMail } from 'react-icons/hi';
 
 export default function HeroSection() {
@@ -11,14 +11,13 @@ export default function HeroSection() {
     "Spring Boot Enthusiast"
   ]);
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
-  //const [fade, setFade] = useState(true);
+  const [fade, setFade] = useState(true); // ✅ uncommented
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setFade(false);
       setTimeout(() => {
         setCurrentRoleIndex((prev) => (prev + 1) % roles.length);
-        setFade(true);
+        setFade(true); // ✅ no longer causes "not defined" error
       }, 500);
     }, 3000);
     return () => clearInterval(interval);
@@ -97,7 +96,7 @@ export default function HeroSection() {
               >
                 <HiMail className="mr-2" />
                 Let's Connect
-                <FaArrowRight className="ml-2 w-4 h-4" />
+                <FaArrowRight className="ml-2 w-4 h-4" /> {/* ✅ uncommented use */}
               </a>
               
               {/* Download Resume Button */}
@@ -111,49 +110,30 @@ export default function HeroSection() {
                 Download CV
               </a>
             </div>
+
             {/* Social Links */}
             <div className="flex items-center space-x-6 pt-4">
-              <a 
-                href="https://github.com/Safa-M-Rafeed" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="flex items-center justify-center w-12 h-12 bg-charcoal2/50 backdrop-blur-sm border border-beige/20 rounded-full text-beige hover:text-olive hover:border-olive/50 transition-all duration-300 hover:scale-110"
-                aria-label="GitHub"
-              >
+              <a href="https://github.com/Safa-M-Rafeed" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="GitHub">
                 <FaGithub className="w-5 h-5" />
               </a>
-              <a 
-                href="https://linkedin.com/in/safa-m-rafeed-b35531216" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="flex items-center justify-center w-12 h-12 bg-charcoal2/50 backdrop-blur-sm border border-beige/20 rounded-full text-beige hover:text-olive hover:border-olive/50 transition-all duration-300 hover:scale-110"
-                aria-label="LinkedIn"
-              >
+              <a href="https://linkedin.com/in/safa-m-rafeed-b35531216" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="LinkedIn">
                 <FaLinkedin className="w-5 h-5" />
               </a>
-              <a 
-                href="https://www.instagram.com/safa_rafeed"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center w-12 h-12 bg-charcoal2/50 backdrop-blur-sm border border-beige/20 rounded-full text-pink-500 hover:text-olive hover:border-olive/50 transition-all duration-300 hover:scale-110"
-                aria-label="Instagram"
-              >
+              <a href="https://www.instagram.com/safa_rafeed" target="_blank" rel="noopener noreferrer" className="social-icon text-pink-500" aria-label="Instagram">
                 <FaInstagram className="w-5 h-5" />
               </a>
             </div>
           </motion.div>
 
-          {/* Right Content - Profile & Stats */}
+          {/* Right Content */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
             className="relative"
           >
-            {/* Profile Card */}
             <div className="bg-charcoal2/50 backdrop-blur-sm border border-beige/10 rounded-3xl p-8 shadow-2xl">
               <div className="text-center space-y-6">
-                {/* Profile Image */}
                 <div className="relative mx-auto w-48 h-48">
                   <div className="absolute inset-0 bg-gradient-to-r from-olive to-beige rounded-full animate-spin-slow opacity-20"></div>
                   <img
@@ -166,7 +146,6 @@ export default function HeroSection() {
                   </div>
                 </div>
 
-                {/* Quick Stats */}
                 <div className="grid grid-cols-2 gap-4 pt-4">
                   <div className="text-center p-4 bg-charcoal/30 rounded-xl border border-olive/10">
                     <div className="text-2xl font-bold text-olive">4+</div>
@@ -178,7 +157,6 @@ export default function HeroSection() {
                   </div>
                 </div>
 
-                {/* Tech Stack Preview */}
                 <div className="bg-charcoal/30 rounded-xl p-4 border border-olive/10">
                   <div className="text-sm text-beige/70 mb-2">Currently working with</div>
                   <div className="flex flex-wrap gap-2 justify-center">
@@ -191,7 +169,7 @@ export default function HeroSection() {
                 </div>
               </div>
             </div>
-            {/* Floating Elements */}
+
             <div className="absolute -top-4 -left-4 bg-olive/20 backdrop-blur-sm rounded-xl p-3 border border-olive/30">
               <FaLaptopCode className="w-6 h-6 text-olive" />
             </div>
